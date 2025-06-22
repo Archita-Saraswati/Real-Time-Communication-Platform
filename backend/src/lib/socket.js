@@ -42,7 +42,7 @@ let io;
 const userSocketMap = {}; // { userId: socketId }
 
 function initializeSocket(server) {
-  io = nsew Server(server, {
+  io = new Server(server, {
     cors: {
       origin: ["http://localhost:5173"],
     },
