@@ -3,16 +3,18 @@ import dotenv from "dotenv";
 import cookieParser from "cookie-parser";
 import cors from "cors";
 import path from "path";
+import http from "http";
 
 import { connectDB } from "./lib/db.js";
 import authRoutes from "./routes/auth.route.js";
 import messageRoutes from "./routes/message.route.js";
-import { app, server } from "./lib/socket.js";
+import { initializeSocket } from "./lib/socket.js";
 
 // Load environment variables
 dotenv.config();
 
-// Use PORT from environment or fallback to 5001
+const app = express();
+const server = http.createServer(app);
 const PORT = process.env.PORT || 5001;
 const __dirname = path.resolve();
 
@@ -21,7 +23,7 @@ app.use(express.json({ limit: "5mb" }));
 app.use(cookieParser());
 app.use(
   cors({
-    origin: "http://localhost:5173", // Update this to your frontend domain on production
+    origin: "http://localhost:5173", // Update this in production
     credentials: true,
   })
 );
@@ -43,8 +45,11 @@ if (process.env.NODE_ENV === "production") {
   });
 }
 
+// 🔌 Initialize Socket.IO
+initializeSocket(server);
+
 // Start server
 server.listen(PORT, () => {
-  console.log("server is running on PORT:" + PORT);
+  console.log("server is running on PORT:", PORT);
   connectDB();
 });
