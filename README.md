@@ -63,14 +63,14 @@ NODE_ENV=development
 Clone the repository:
 
 bash
-git clone https://github.com/yourusername/Real-Time-Chat-Application.git
+git clone https://github.com/yourusername/Real-Time-Communication-Platform.git
 
 
 
 Go to the project directory:
 
 bash
-cd Real-Time-Chat-Application
+cd Real-Time-Communication-Platform
 
 
 
