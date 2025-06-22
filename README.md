@@ -85,7 +85,7 @@ Start the backend server:
 
 bash
 cd backend  
-npm run dev  
+npm start  
 
 
 Run the frontend:
