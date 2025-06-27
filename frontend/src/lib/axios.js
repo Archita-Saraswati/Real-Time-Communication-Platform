@@ -7,9 +7,8 @@
 import axios from "axios";
 
 export const axiosInstance = axios.create({
-  baseURL:
-    import.meta.env.MODE === "development"
-      ? "http://localhost:5001/api"
-      : "https://real-time-communication-platform.onrender.com/api",
+  baseURL: import.meta.env.MODE === "development"
+    ? "https://convowise-backend.onrender.com/api"
+    : "/api",
   withCredentials: true,
 });
