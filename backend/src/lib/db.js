@@ -23,3 +23,4 @@ export const connectDB = async () => {
     process.exit(1); // Force stop the server if DB connection fails
   }
 };
+a
